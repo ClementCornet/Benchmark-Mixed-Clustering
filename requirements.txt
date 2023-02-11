@@ -1,0 +1,9 @@
+numpy
+pandas
+memory-profiler
+scikit-learn
+scipy
+os
+sys
+kmodes
+glob
