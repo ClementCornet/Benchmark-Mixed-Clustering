@@ -1,6 +1,6 @@
 import numpy as np
 import umap.umap_ as umap
-from algorithms.dimension_reduction.mixed_distances import huang_distance_matrix
+from algorithms.utils.mixed_distances import huang_distance_matrix
 
 
 

@@ -1,19 +1,19 @@
 import numpy as np
 import pandas as pd
 from sklearn.manifold import SpectralEmbedding
-from algorithms.dimension_reduction.mixed_distances import huang_distance_matrix
+from algorithms.utils.mixed_distances import huang_distance_matrix
 
 
 @profile
 def laplacian_embedding(df):
     """
-    Compute UMAP embedding of a Mixed Dataset. To do so, we use Huang's distance, that is suited for mixed data.
+    Compute Laplacian Eigenmaps embedding of a Mixed Dataset. To do so, we use Huang's distance, that is suited for mixed data.
 
     Parameters:
-        df (pandas.DataFrame) : Dataset to compute UMAP from
+        df (pandas.DataFrame) : Dataset to compute Laplacian Eigenmaps from
 
     Return:
-        embedding (numpy.array) : UMAP coordinates in a Euclidean Space
+        embedding (numpy.array) : Projected coordinates in a Euclidean Space
     """
     t = len(df.columns)
     distances = huang_distance_matrix(df)
@@ -23,7 +23,7 @@ def laplacian_embedding(df):
 @profile
 def laplacian_from_distance(dist, t):
     """
-    Compute Laplacian Eigenmaps from a pairwise distance matrix.
+    Compute Laplacian Eigenmaps from a pairwise distance matrix. Adjacency matrix is computed using a Heat kernel.
     
     Parameters:
         dist (numpy.array) : Pairwise distances matrix to compute Laplacian Eigenmaps on.

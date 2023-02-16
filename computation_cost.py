@@ -13,11 +13,14 @@ import algorithms.famdkmeans
 import algorithms.hierar_gower
 import algorithms.pretopo_UMAP
 import algorithms.pretopo_PaCMAP
+import algorithms.pretopo_laplacian
+import algorithms.pretopo_FAMD
 
 
 def get_algo(args, **kwargs):
     """
     Get the algorithm to profile from Command Line Arguments
+
     """
     if args[0] == "denseclus":
         return algorithms.denseclus.process
@@ -37,13 +40,18 @@ def get_algo(args, **kwargs):
         return algorithms.pretopo_UMAP.process
     if args[0] == "pretopo_PaCMAP":
         return algorithms.pretopo_PaCMAP.process
-    return lambda x : x
-    raise NotImplementedError()
+    if args[0] == "pretopo_FAMD":
+        return algorithms.pretopo_FAMD.process
+    if args[0] == "pretopo_laplacian":
+        return algorithms.pretopo_laplacian.process
+
+    raise NotImplementedError("Wrong Algorithm Name")
 
 #@profile 
 def get_data(args):
     """
     Get dataset from command line, to benchmark computation cost of a given algorithm
+
     """
     if args[1] != "generated":
         return pd.read_csv(f"data/{args[1]}.csv").dropna() # i.e. 'penguins' for 'data/penguins.csv'
