@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from algorithms.utils.clustering_utils import elbow_method
 
 
-#@profile
+@profile
 def process(df, **kwargs):
     """Process K-Means of a Dataset's FAMD Coordinate"""
 
@@ -19,7 +19,7 @@ def process(df, **kwargs):
     km.fit(reduced)
     return km.labels_
 
-#@profile
+@profile
 def famd_embedding(df):
     # Get FAMD Coordinates
     famd = prince.FAMD(n_components=len(df.columns)) # Using the number of dimensions of the original data

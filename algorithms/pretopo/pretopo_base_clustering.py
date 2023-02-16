@@ -4,6 +4,12 @@ from algorithms.pretopo.pretopo_hierarchy import pseudohierarchy_filter_equivale
 
 import numpy as np
 
+@profile
+def pretopo_clustering(data):
+    pretopo_clusters = Pretopocluster().fit_predict(np.asarray(data))
+    clusters = pretopo_clusters.astype(str)
+    return clusters
+
 class Pretopocluster:
 
     

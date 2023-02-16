@@ -6,7 +6,7 @@ from subprocess import check_output
 import numpy as np
 from algorithms.utils.clustering_utils import elbow_method
 
-#@profile
+@profile
 def process(df, **kwargs):
     """Process MixtComp
     

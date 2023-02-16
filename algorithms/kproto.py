@@ -2,7 +2,7 @@ from kmodes.kprototypes import KPrototypes
 from sklearn.preprocessing import StandardScaler
 from algorithms.utils.clustering_utils import elbow_method
 
-#@profile
+@profile
 def process(df, **kwargs):
     
     k = elbow_method(df)

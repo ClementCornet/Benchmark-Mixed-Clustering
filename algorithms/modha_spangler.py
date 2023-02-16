@@ -6,7 +6,7 @@ from algorithms.utils.clustering_utils import elbow_method
 import json
 
 
-#@profile
+@profile
 def process(df, **kwargs):
     """Process Modha-Spangler Algorithm
     

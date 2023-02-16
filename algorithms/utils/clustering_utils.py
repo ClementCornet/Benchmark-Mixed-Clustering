@@ -2,7 +2,7 @@ import gower
 from yellowbrick.cluster import KElbowVisualizer
 from sklearn.cluster import KMeans
 
-#@profile
+@profile
 def elbow_method(df):
     """
     Performs Elbow Method to determine the optimal number of clusters in a dataframe. To fit mixed data,
