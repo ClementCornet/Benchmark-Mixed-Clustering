@@ -1,19 +1,44 @@
 import sys # Get sys.argv
 import pandas as pd # Read CSV
 from utils.gen_data import generate_data # Generate Data
+from algorithms.utils.clustering_utils import elbow_method # Get the optimal number of clusters K
 
 # Imports Algos
-import algorithms.kprototest
+import algorithms.kproto
+import algorithms.denseclus
+import algorithms.kamila
+import algorithms.modha_spangler
+import algorithms.mixtcomp
+import algorithms.famdkmeans
+import algorithms.hierar_gower
+import algorithms.pretopo_UMAP
+import algorithms.pretopo_PaCMAP
 
 
-def get_algo(args):
+def get_algo(args, **kwargs):
     """
     Get the algorithm to profile from Command Line Arguments
     """
-    if args[0] == "kprototest":
-        return algorithms.kprototest.process
+    if args[0] == "denseclus":
+        return algorithms.denseclus.process
+    if args[0] == "kproto":
+        return algorithms.kproto.process
+    if args[0] == "kamila":
+        return algorithms.kamila.process
+    if args[0] == "modha_spangler":
+        return algorithms.modha_spangler.process
+    if args[0] == "mixtcomp":
+        return algorithms.mixtcomp.process
+    if args[0] == "famdkmeans":
+        return algorithms.famdkmeans.process
+    if args[0] == "hierar_gower":
+        return algorithms.hierar_gower.process
+    if args[0] == "pretopo_UMAP":
+        return algorithms.pretopo_UMAP.process
+    if args[0] == "pretopo_PaCMAP":
+        return algorithms.pretopo_PaCMAP.process
     return lambda x : x
-    raise NotImplementedError("only kprototest for the moment")
+    raise NotImplementedError()
 
 #@profile 
 def get_data(args):
@@ -32,9 +57,11 @@ def get_data(args):
             n_indiv=int(gen_args[5])
         )
 
-@profile
+#@profile
 def process_clustering(args):
-    return get_algo(args)(get_data(args))
+    data = get_data(args)
+    algo = get_algo(args)
+    return algo(data)
 
 #@profile
 def profiling():
@@ -60,7 +87,3 @@ if __name__ == '__main__':
         
     """
     profiling()
-    
-    #ll = []
-    #for i in range(100_000_000):
-    #    ll.append(i)

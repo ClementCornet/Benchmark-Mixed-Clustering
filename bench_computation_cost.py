@@ -1,8 +1,8 @@
 import os
 import glob
 
+from utils.prepare_profiling import findReplace # Replace string in every file in a folder
 
-from subprocess import check_output
 
 # Get all files inside of `algorithms` folder, to pass them to computation_cost.py through CLI
 # algorithms/<FILENAME>.py -> <FILENAME>
@@ -76,7 +76,7 @@ def mprof_commands():
     # Commands to plot and save results
     plot_commands = [
         [
-            f"mprof plot -o computation_cost/{algorithm}/{file}.png -t {file}" for algorithm in ALGORITHMS
+            f"mprof plot -o computation_cost/{algorithm}/{'_'.join(file.split('_')[:-1])}/{file}.png -t {str(algorithm) + ' ' + str(file)}" for algorithm in ALGORITHMS
         ] for file in filenames
     ]
 
@@ -94,13 +94,18 @@ if __name__ == "__main__":
     Run this file (from repo's root directory) to generate plots in a dedicated folder.
 
     """
+    findReplace("algorithms","#@profile","@profile","*.py")
+
+    gen_features = ["Number_of_clusters", "Clusters_Std", "Numerical_Features",
+                    "Categorical_Features", "Categorical_Uniques", "Number_of_individuals"]
 
     # Create directories for each algorithm's results
     for algorithm in ALGORITHMS:
-        path = f'computation_cost/{algorithm}'
-        isExist = os.path.exists(path)
-        if not isExist:
-            os.makedirs(path)
+        for feat in gen_features:
+            path = f'computation_cost/{algorithm}/{feat}'
+            isExist = os.path.exists(path)
+            if not isExist:
+                os.makedirs(path)
 
     # Get every command to run
     commands = mprof_commands()
@@ -111,6 +116,11 @@ if __name__ == "__main__":
         # For each dataset
         for r, p in list(zip(run, plot)):
             # Run, Plot, Clean
+            # TODO : CHANGE BY check_output(command, timeout=XXX) to set a max run time
             os.system(r)
             os.system(p)
             os.system("mprof clean")
+
+
+
+    findReplace("algorithms","@profile","#@profile","*.py")

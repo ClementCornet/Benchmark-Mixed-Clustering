@@ -7,3 +7,4 @@ os
 sys
 kmodes
 glob
+fnmatch
