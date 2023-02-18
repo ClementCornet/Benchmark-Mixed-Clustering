@@ -73,6 +73,8 @@ def mprof_commands():
         [f"{base_command} {algorithm} {dataset}" for algorithm in ALGORITHMS] for dataset in datasets_commands
     ]
 
+
+    # REPLACE BY LIST OF PATH, TO GENERATE A PRETTIER PLOT AND JSON WITH INDICES
     # Commands to plot and save results
     plot_commands = [
         [
@@ -120,7 +122,5 @@ if __name__ == "__main__":
             os.system(r)
             os.system(p)
             os.system("mprof clean")
-
-
 
     findReplace("algorithms","@profile","#@profile","*.py")

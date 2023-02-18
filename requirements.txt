@@ -8,3 +8,5 @@ sys
 kmodes
 glob
 fnmatch
+plotly
+kaleido

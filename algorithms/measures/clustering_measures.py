@@ -23,7 +23,7 @@ def internal_indices(df, clusters, **kwargs):
     """
 
     # Get Dimension Reductions of `df`
-    famd, lap, um, pm = None
+    famd, lap, um, pm = None, None, None, None
     if 'famd' in kwargs.keys():
         famd =  kwargs['famd']
     else:
@@ -40,9 +40,9 @@ def internal_indices(df, clusters, **kwargs):
         pm = PaCMAP_embedding(df)
 
     if 'umap' in kwargs.keys():
-        pm =  kwargs['umap']
+        um =  kwargs['umap']
     else:
-        pm = umap_embedding(df)
+        um = umap_embedding(df)
 
     empty_dict = {'CH':0,'DB':-1,'Silhouette':0}
     indices = {

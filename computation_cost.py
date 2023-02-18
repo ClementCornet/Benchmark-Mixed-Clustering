@@ -2,6 +2,8 @@ import sys # Get sys.argv
 import pandas as pd # Read CSV
 from utils.gen_data import generate_data # Generate Data
 from algorithms.utils.clustering_utils import elbow_method # Get the optimal number of clusters K
+from algorithms.measures.clustering_measures import internal_indices # Evaluate Clusters
+import json
 
 # Imports Algos
 import algorithms.kproto
@@ -69,7 +71,7 @@ def get_data(args):
 def process_clustering(args):
     data = get_data(args)
     algo = get_algo(args)
-    return algo(data)
+    return data, algo(data)
 
 #@profile
 def profiling():
@@ -81,9 +83,13 @@ def profiling():
     2nd Argument - Name of CSV / "generated"
         if generated, following args are : n_clusters clust_std n_num n_cat cat_unique n_indiv
 
+    At the end, compute internal validation indices, and write their result to a file
+
     """
     args = sys.argv[1:]
-    _ = process_clustering(args)
+    clusters = process_clustering(args) # ICI, METTRE EVALUATION + Better Plot
+    indices = internal_indices(clusters[0], clusters[1])
+    pd.DataFrame(indices).to_csv('indices.csv')
 
 
 
