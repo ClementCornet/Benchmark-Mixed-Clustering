@@ -2,7 +2,7 @@ from algorithms.pretopo.pretopo_base_clustering import pretopo_clustering
 from algorithms.dimension_reduction.laplacian_reduction import laplacian_embedding
 
 
-@profile
+#@profile
 def process(df, **kwargs):
 
     """

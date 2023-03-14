@@ -3,8 +3,9 @@ from algorithms.dimension_reduction.famd_reduction import famd_embedding
 from algorithms.dimension_reduction.laplacian_reduction import laplacian_embedding
 from algorithms.dimension_reduction.pacmap_reduction import PaCMAP_embedding
 from algorithms.dimension_reduction.umap_reduction import umap_embedding
+import gower
 
-@profile
+#@profile
 def internal_indices(df, clusters, **kwargs): 
     """
     Computes internal validation indices for a mixed clustering. Uses dimension reductions (FAMD, Laplacian Eigenmaps,
@@ -49,12 +50,19 @@ def internal_indices(df, clusters, **kwargs):
         'FAMD':empty_dict.copy(),
         'Laplacian':empty_dict.copy(),
         'UMAP':empty_dict.copy(),
-        'PaCMAP':empty_dict.copy()
+        'PaCMAP':empty_dict.copy(),
+        'Gower':empty_dict.copy()
     }
 
     only_one_cluster = (len(set(clusters)) == 1)
     if only_one_cluster:
+        #import streamlit as st
+        #st.write('non')
         return indices # No need to compute indices id there is only one cluster
+    #import streamlit as st
+    from sklearn.preprocessing import StandardScaler
+    #st.write(clusters.dtype)
+    #st.write(calinski_harabasz_score(StandardScaler().fit_transform(famd_embedding(df.copy())),clusters))
 
     # Compute 3 indices for each dimension reduction
     indices['FAMD']['CH'] = calinski_harabasz_score(famd, clusters)
@@ -72,5 +80,8 @@ def internal_indices(df, clusters, **kwargs):
     indices['PaCMAP']['CH'] = calinski_harabasz_score(pm, clusters)
     indices['PaCMAP']['DB'] = davies_bouldin_score(pm, clusters)
     indices['PaCMAP']['Silhouette'] = silhouette_score(pm, clusters)
+
+    gmat = gower.gower_matrix(df)
+    indices['Gower']['Silhouette'] = silhouette_score(gmat, clusters, metric='precomputed')
 
     return indices

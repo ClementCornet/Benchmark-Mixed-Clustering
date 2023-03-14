@@ -6,7 +6,7 @@ from algorithms.utils.clustering_utils import elbow_method
 import json
 
 
-@profile
+#@profile
 def process(df, **kwargs):
     """Process Kamila Clustering algorithm
     
@@ -38,7 +38,4 @@ def process(df, **kwargs):
     os.remove("temp_clustered.csv")
     os.remove("k.json")
 
-    #print(df_out.value_counts())
-    return df_out
-
-    # df_out['cluster']
+    return df_out['x'].astype(str)

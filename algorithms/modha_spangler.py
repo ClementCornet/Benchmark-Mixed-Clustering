@@ -6,7 +6,7 @@ from algorithms.utils.clustering_utils import elbow_method
 import json
 
 
-@profile
+#@profile
 def process(df, **kwargs):
     """Process Modha-Spangler Algorithm
     
@@ -27,10 +27,7 @@ def process(df, **kwargs):
     # Process Data with R
     check_output("Rscript algorithms/R_Scripts/modha_spangler.R", shell=True).decode()
 
-    # Load clustered data
     df_out = pd.read_csv('temp_clustered.csv')
-
-    #df['cluster'] = df_out['cluster']
 
     # Remove temp files created to interact through R
     os.remove("temp_cat.csv")
@@ -38,6 +35,4 @@ def process(df, **kwargs):
     os.remove("temp_clustered.csv")
     os.remove("k.json")
 
-    return df_out
-
-    #return df
+    return df_out["x"].astype(str)

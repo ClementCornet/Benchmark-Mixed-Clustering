@@ -23,12 +23,3 @@ gms_res_hw <- gmsClust(con_vars, cat_vars_dum, nclust = k)
 clusters <- gms_res_hw$results$cluster - 1
 
 write.csv(clusters, "temp_clustered.csv", row.names = FALSE)
-
-#df <- cbind(
-#    con_vars,
-#    cat_vars_fac,
-#    cluster = clusters
-#)
-
-# Write results to a temp CSV file
-write.csv(df, "temp_clustered.csv", row.names = FALSE)

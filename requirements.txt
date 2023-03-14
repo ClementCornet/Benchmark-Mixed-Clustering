@@ -10,3 +10,8 @@ glob
 fnmatch
 plotly
 kaleido
+pyclustertend
+scipy
+umap
+pacmap
+prince

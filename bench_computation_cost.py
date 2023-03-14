@@ -78,7 +78,8 @@ def mprof_commands():
     # Commands to plot and save results
     plot_commands = [
         [
-            f"mprof plot -o computation_cost/{algorithm}/{'_'.join(file.split('_')[:-1])}/{file}.png -t {str(algorithm) + ' ' + str(file)}" for algorithm in ALGORITHMS
+            # -t {str(algorithm) + ' ' + str(file)
+            f"mprof plot -o computation_cost/{algorithm}/{'_'.join(file.split('_')[:-1])}/{file}.png" for algorithm in ALGORITHMS
         ] for file in filenames
     ]
 
@@ -112,14 +113,27 @@ if __name__ == "__main__":
     # Get every command to run
     commands = mprof_commands()
 
+    i=0
+
+
+
+    ############## RESTART 268
+
+    tot_num = len(commands["run"]) * len(commands["run"][0])
+    print(f"Total Number of Commands : {tot_num}")
     # For each algo
     for run, plot in list(zip(commands["run"], commands["plot"])):
-
         # For each dataset
         for r, p in list(zip(run, plot)):
+            i+=1
+            #if i < 268:
+            #    continue
+            print(f"-------------------------------{i}/{tot_num}-------------------------------")
             # Run, Plot, Clean
             # TODO : CHANGE BY check_output(command, timeout=XXX) to set a max run time
+            print(f" ... {r} ...")
             os.system(r)
+            print(f" ... {p} ...")
             os.system(p)
             os.system("mprof clean")
 

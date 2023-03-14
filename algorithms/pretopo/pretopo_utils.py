@@ -29,6 +29,7 @@ def prenetwork_closest(points, distances=True, distance_func=None, area_val=None
 
 
     closest = np.sum(np.ma.masked_less(dm, square_length/2).mask.astype('float'), axis=1)
+
     inverse = (closest-1)/closest
     real_points = len(points) - sum(inverse)
     radius = 2.5*square_length

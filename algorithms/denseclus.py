@@ -1,6 +1,6 @@
 from denseclus import DenseClus
 
-@profile
+#@profile
 def process(df, **kwargs):
     """Process HDBSCAN algorithm on dataset's UMAP coordinates.
     

@@ -4,7 +4,7 @@ from algorithms.pretopo.pretopo_hierarchy import pseudohierarchy_filter_equivale
 
 import numpy as np
 
-@profile
+#@profile
 def pretopo_clustering(data):
     pretopo_clusters = Pretopocluster().fit_predict(np.asarray(data))
     clusters = pretopo_clusters.astype(str)
@@ -77,7 +77,9 @@ def clustering(data, method="mine",distance_func=None,area_val=None):
     pos = nx.spring_layout(G)
     pos = hierarchy_pos(G, -1, width=400)
 
-    
+    #import streamlit as st
+    #st.write(pos)
+    #st.write("(from pretopo base clustering l82)")
 
     labels = np.zeros(len(data))
     for i, closure in enumerate(final_selected_closures_gravity):

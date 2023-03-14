@@ -17,6 +17,7 @@ import algorithms.pretopo_UMAP
 import algorithms.pretopo_PaCMAP
 import algorithms.pretopo_laplacian
 import algorithms.pretopo_FAMD
+import algorithms.clustmd
 
 
 def get_algo(args, **kwargs):
@@ -46,6 +47,8 @@ def get_algo(args, **kwargs):
         return algorithms.pretopo_FAMD.process
     if args[0] == "pretopo_laplacian":
         return algorithms.pretopo_laplacian.process
+    if args[0] == "clustmd":
+        return algorithms.clustmd.process
 
     raise NotImplementedError("Wrong Algorithm Name")
 
@@ -88,8 +91,8 @@ def profiling():
     """
     args = sys.argv[1:]
     clusters = process_clustering(args) # ICI, METTRE EVALUATION + Better Plot
-    indices = internal_indices(clusters[0], clusters[1])
-    pd.DataFrame(indices).to_csv('indices.csv')
+    #indices = internal_indices(clusters[0], clusters[1])
+    #pd.DataFrame(indices).to_csv('indices.csv')
 
 
 

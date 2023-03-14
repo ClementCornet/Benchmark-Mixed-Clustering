@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 import gower
 from algorithms.utils.clustering_utils import elbow_method
 
-@profile
+#@profile
 def process(df, **kwargs):
     """Agglomerative Hierarchical Clustering, using Gower's Distance, to get desired number of clusters"""
 
@@ -18,7 +18,7 @@ def process(df, **kwargs):
     )
     return clusters
 
-@profile
+#@profile
 def get_gower_matrix(df):
     numerical_columns = df.select_dtypes('number').columns
     categorical_columns = df.select_dtypes('object').columns

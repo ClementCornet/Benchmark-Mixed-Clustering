@@ -7,7 +7,7 @@ from scipy.spatial.distance import cdist
 from algorithms.pretopo.pretopo_base_clustering import pretopo_clustering
 from algorithms.dimension_reduction.umap_reduction import umap_embedding
 
-@profile
+#@profile
 def process(df, **kwargs):
 
     """
@@ -16,6 +16,9 @@ def process(df, **kwargs):
     """
 
     embedding = umap_embedding(df)
+
+    #import streamlit as st
+    #st.dataframe(embedding)
 
     clusters = pretopo_clustering(embedding)
 

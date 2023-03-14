@@ -2,7 +2,7 @@ from algorithms.pretopo.pretopo_base_clustering import pretopo_clustering
 from algorithms.dimension_reduction.pacmap_reduction import famd_embedding
 
 
-@profile
+#@profile
 def process(df, **kwargs):
 
     """
