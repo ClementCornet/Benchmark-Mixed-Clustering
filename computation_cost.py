@@ -7,6 +7,7 @@ import json
 
 # Imports Algos
 import algorithms.kproto
+import algorithms.pretopologic_euclidean_hamming
 import algorithms.denseclus
 import algorithms.kamila
 import algorithms.modha_spangler
@@ -29,6 +30,8 @@ def get_algo(args, **kwargs):
         return algorithms.denseclus.process
     if args[0] == "kproto":
         return algorithms.kproto.process
+    if args[0] == "pretopologic_euclidean_hamming":
+        return algorithms.pretopologic_euclidean_hamming.process
     if args[0] == "kamila":
         return algorithms.kamila.process
     if args[0] == "modha_spangler":

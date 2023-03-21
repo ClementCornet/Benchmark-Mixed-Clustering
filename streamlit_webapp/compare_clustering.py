@@ -4,8 +4,9 @@ import pandas as pd # Pandas
 import plotly.express as px # Plotting
 
 # Algorithms
-from algorithms import denseclus,famdkmeans,hierar_gower,kamila,kproto,mixtcomp,modha_spangler, \
-                pretopo_FAMD, pretopo_laplacian, pretopo_UMAP, pretopo_PaCMAP, clustmd, pretopo_louvain
+from algorithms import denseclus,famdkmeans,hierar_gower,kamila,kproto, pretopologic_euclidean_hamming, \
+                       mixtcomp,modha_spangler, pretopo_FAMD, pretopo_laplacian, pretopo_UMAP, pretopo_PaCMAP, \
+                       clustmd, pretopo_louvain
 
 from algorithms.measures.clustering_measures import internal_indices
 
@@ -28,19 +29,20 @@ def page():
         #st.write(df.dtypes)
         st.title("Compare Clustering Algorithms")
         clusters = {
-            "DenseClus":denseclus.process(df),
+            # "DenseClus":denseclus.process(df),
             #"FAMD-KMeans":famdkmeans.process(df),
-            "Phillip & Ottaway":hierar_gower.process(df),
-            "Kamila":kamila.process(df),
+            # "Phillip & Ottaway":hierar_gower.process(df),
+            # "Kamila":kamila.process(df),
             #"ClustMD":clustmd.process(df),
             "K-Prototypes":kproto.process(df),
+            "PretopoLogic_Euclidean_Hamming":pretopologic_euclidean_hamming.process(df),
             #"MixtComp":mixtcomp.process(df),
             #"Modha-Spangler":modha_spangler.process(df),
             "Pretopo-FAMD":pretopo_FAMD.process(df),
-            "Pretopo-Laplacian":pretopo_laplacian.process(df),
-            "Pretopo-UMAP":pretopo_UMAP.process(df),
+            # "Pretopo-Laplacian":pretopo_laplacian.process(df),
+            # "Pretopo-UMAP":pretopo_UMAP.process(df),
             "Pretopo-PaCMAP":pretopo_PaCMAP.process(df),
-            "Pretopo-Louvain":pretopo_louvain.process(df),
+            # "Pretopo-Louvain":pretopo_louvain.process(df),
             #"Pretopo-PaCMAP-COPIER COLLER CA DOIT MARCHER JIHAZORGHAOZ":pretopo_PaCMAP.process2(df),
             #"UMAPHDBSCANAAAH":umap_hdbscan(df),
             #"NEWLAP":new_laplacian_pretopo(df)
@@ -88,19 +90,20 @@ def page_2():
         df = get_data()
     with cols[1].container():
         clusters = {
-            "DenseClus":denseclus.process(df),
+            # "DenseClus":denseclus.process(df),
             #"FAMD-KMeans":famdkmeans.process(df),
-            "Phillip & Ottaway":hierar_gower.process(df),
-            "Kamila":kamila.process(df),
+            # "Phillip & Ottaway":hierar_gower.process(df),
+            # "Kamila":kamila.process(df),
             #"ClustMD":clustmd.process(df),
             "K-Prototypes":kproto.process(df),
+            "PretopoLogic_Euclidean_Hamming":pretopologic_euclidean_hamming.process(df),
             #"MixtComp":mixtcomp.process(df),
             #"Modha-Spangler":modha_spangler.process(df),
             "Pretopo-FAMD":pretopo_FAMD.process(df),
-            "Pretopo-Laplacian":pretopo_laplacian.process(df),
-            "Pretopo-UMAP":pretopo_UMAP.process(df),
+            # "Pretopo-Laplacian":pretopo_laplacian.process(df),
+            # "Pretopo-UMAP":pretopo_UMAP.process(df),
             "Pretopo-PaCMAP":pretopo_PaCMAP.process(df),
-            "Pretopo-Louvain":pretopo_louvain.process(df),
+            # "Pretopo-Louvain":pretopo_louvain.process(df),
             #"Pretopo-PaCMAP-COPIER COLLER CA DOIT MARCHER JIHAZORGHAOZ":pretopo_PaCMAP.process2(df),
             #"UMAPHDBSCANAAAH":umap_hdbscan(df),
             #"NEWLAP":new_laplacian_pretopo(df)
