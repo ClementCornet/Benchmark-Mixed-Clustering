@@ -1,0 +1,13 @@
+classifyKamila          Classify new data into existing KAMILA clusters
+dptmCpp                 Calculate distances from a set of points to a
+                        set of centroids
+dummyCodeFactorDf       Dummy coding of a data frame of factor
+                        variables
+genMixedData            Generate simulated mixed-type data with cluster
+                        structure.
+gmsClust                A general implementation of Modha-Spangler
+                        clustering for mixed-type data.
+kamila                  KAMILA clustering of mixed-type data.
+kamila-package          Clustering for mixed continuous and categorical
+                        data sets
+wkmeans                 Weighted k-means for mixed-type data

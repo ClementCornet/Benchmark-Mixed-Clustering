@@ -1,5 +1,5 @@
-library(kamila)
-library("rjson")
+library(kamila, lib.loc = "/home/loup-noe/Projets/DVRC/Benchmark-Mixed-Clustering/R_lib")
+library("rjson", lib.loc = "/home/loup-noe/Projets/DVRC/Benchmark-Mixed-Clustering/R_lib")
 
 # Python passes k (number of clusters) through a JSON file
 k <- fromJSON(file = "k.json")$n_clusters
