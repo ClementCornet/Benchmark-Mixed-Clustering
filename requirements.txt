@@ -3,11 +3,11 @@ pandas
 memory-profiler
 scikit-learn
 scipy
-os
-sys
+# os
+# sys
 kmodes
-glob
-fnmatch
+# glob2
+# fnmatch
 plotly
 kaleido
 pyclustertend
@@ -15,3 +15,10 @@ scipy
 umap
 pacmap
 prince
+scikit-network
+Amazon-DenseClus
+streamlit_option_menu
+streamlit
+rpy2
+gower
+yellowbrick
