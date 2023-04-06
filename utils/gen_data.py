@@ -26,7 +26,8 @@ def generate_data(n_clusters=5,clust_std=0.1,n_num=15,n_cat=15,cat_unique=3,n_in
         n_samples=n_clusters,
         n_features=n_num+n_cat,
         centers=n_clusters,
-        return_centers=True
+        return_centers=True,
+        random_state=1
     )
 
     # Get Average distance between generated clusters centers
@@ -39,7 +40,8 @@ def generate_data(n_clusters=5,clust_std=0.1,n_num=15,n_cat=15,cat_unique=3,n_in
         n_features=n_num+n_cat,
         centers=mono_blobs[2]/avg_dist,
         cluster_std=clust_std,
-        return_centers=True
+        return_centers=True,
+        random_state=1
     )
 
     # Only keep point coordinates

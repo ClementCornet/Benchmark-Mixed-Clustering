@@ -16,7 +16,7 @@ def areaminmax(dm, df_data):
     # # print('df_data[0].max(): ', df_data[0].max())
     # return x_dif * y_dif
     area = 1
-    for i in range(df_data.shape[0]):
+    for i in range(df_data.shape[1]):
         print(f"df_data.iloc[:, {i}].max() = {df_data.iloc[:, i].max()}")
         print(f"df_data.iloc[:, {i}].min() = {df_data.iloc[:, i].min()}")
         area *= (df_data.iloc[:, i].max() - df_data.iloc[:, i].min())

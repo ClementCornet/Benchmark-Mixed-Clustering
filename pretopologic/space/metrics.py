@@ -61,5 +61,5 @@ if __name__ == "__main__":
     a = np.random.choice(np.arange(-50, 51), 2500).reshape(50, 50) / 10
     prenet = Prenetwork(a, [2])
     pre_space = PretopologicalSpace([prenet], [0])
-    ans = best_ilp(pre_space, 4)
+    ans = best_ilp(pre_space, 5)
     print("done")
