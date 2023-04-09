@@ -124,6 +124,7 @@ def make_tree(adjacency_matrix):
     tree.extend([(matrix_len - 1, -1)])
     return tree
 
+
 def hierarchy_pos(G, root=None, width=50., vert_gap = 0.2, vert_loc = 0, xcenter = 0.5):
     import networkx as nx
     import random

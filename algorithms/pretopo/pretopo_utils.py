@@ -41,7 +41,6 @@ def prenetwork_closest(points, distances=True, distance_func=None, area_val=None
         network = network_ball(dm, points, radius)
     return Prenetwork(network, [th])
 
-
 def network_ball(dm, points, radius):
     adj = (dm < radius).astype('float')
     np.fill_diagonal(adj, 0)
@@ -55,7 +54,6 @@ def network_ball_distances(dm, points, radius):
     network[adj] = 0
     np.fill_diagonal(network, 0)
     return network
-
 
 def elementary_closures_shortest_degree(pre_space, degree=2):
     dict_closures = {i: set() for i in range(degree, pre_space.size + 1)}
@@ -95,7 +93,6 @@ def elementary_closures_shortest_degree(pre_space, degree=2):
         dict_closures[i] = level_closed.copy()
     return create_closures_list(dict_closures, degree)
 
-
 def create_closures_list(dict_closures, degree):
     closures_list = list()
     noise_counter = 0
@@ -114,7 +111,6 @@ def create_closures_list(dict_closures, degree):
 
     print("THE NOISE WAS: " + str(noise_counter))
     return closures_list
-
 
 def elementary_closures_shortest_degree_largeron(pre_space, degree=2):
     # we make a network with all the
@@ -136,7 +132,6 @@ def elementary_closures_shortest_degree_largeron(pre_space, degree=2):
             initial_set[i_new] = 1
         list_closures.append(set_closure(pre_space, initial_set))
     return list_closures
-
 
 def set_closure(pre_space, initial_set):
     set_pseudoclosure = pseudoclosure(pre_space, initial_set)
