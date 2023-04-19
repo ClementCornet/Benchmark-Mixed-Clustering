@@ -45,7 +45,7 @@ def get_data():
             st.dataframe(df)
             st.write(df.isna().sum().sum())
             for col in df.columns:
-                if df[col].nunique() <= 3:
+                if df[col].nunique() < 3:
                     df[col] = df[col].astype('object')
             st.write(df.dtypes)
             return df
