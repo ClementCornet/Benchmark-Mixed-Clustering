@@ -18,6 +18,7 @@ import algorithms.pretopo_PaCMAP
 import algorithms.pretopo_laplacian
 import algorithms.pretopo_FAMD
 import algorithms.clustmd
+import algorithms.pretopomd
 
 
 def get_algo(args, **kwargs):
@@ -49,6 +50,8 @@ def get_algo(args, **kwargs):
         return algorithms.pretopo_laplacian.process
     if args[0] == "clustmd":
         return algorithms.clustmd.process
+    if args[0] == "pretopomd":
+        return algorithms.pretopomd.process
 
     raise NotImplementedError("Wrong Algorithm Name")
 
