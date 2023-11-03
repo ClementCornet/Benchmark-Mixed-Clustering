@@ -7,6 +7,7 @@ from pretopologic.structure.closures import elementary_closures_shortest_degree
 from pretopologic.structure.hierarchy import Pseudohierarchy
 
 
+#@profile
 def process(df, **kwarg):
     """Process K-Means of a Dataset's FAMD Coordinate"""
     radius_coeff = 20
