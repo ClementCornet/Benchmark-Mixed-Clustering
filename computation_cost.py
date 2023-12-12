@@ -7,7 +7,7 @@ import json
 
 # Imports Algos
 import algorithms.kproto
-import algorithms.pretopologic_euclidean_hamming
+import algorithms.pretopomd
 import algorithms.denseclus
 import algorithms.kamila
 import algorithms.modha_spangler

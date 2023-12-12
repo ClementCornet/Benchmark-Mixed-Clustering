@@ -5,7 +5,8 @@ from sklearn.preprocessing import StandardScaler
 
 
 
-
+def area(dm, data):
+    return (dm.max()**2)
 
 # calculates an approximation of the distance between elements if they were evenly spaced
 # uses the augmenting lines in the grid heuristic

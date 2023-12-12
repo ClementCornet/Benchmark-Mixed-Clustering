@@ -32,7 +32,10 @@ def process(df, **kwargs):
         json.dump(json_data, f)
 
     # Calling Rscript Executable to process data
-    check_output("Rscript algorithms/R_Scripts/clustmd.R", shell=True).decode()
+    try:
+        check_output("Rscript algorithms/R_Scripts/clustmd.R", shell=True).decode()
+    except:
+        return [-1] * len(df)
 
     df_out = pd.read_csv('temp_clustered.csv') # R stored clusters vector in a file
 

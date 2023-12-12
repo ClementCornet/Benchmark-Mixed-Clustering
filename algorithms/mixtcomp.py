@@ -1,4 +1,3 @@
-
 import pandas as pd
 import json
 import os
@@ -52,7 +51,10 @@ def process(df, **kwargs):
 
 
     # Process Data through R
-    check_output("Rscript algorithms/R_Scripts/mixtcomp.R", shell=True).decode()
+    try:
+        check_output("Rscript algorithms/R_Scripts/mixtcomp.R", shell=True).decode()
+    except:
+        return [-1] * len(df)
 
     # Load Clustered Data written by R
     clusters = pd.read_csv('mixtcomp_temp.csv')

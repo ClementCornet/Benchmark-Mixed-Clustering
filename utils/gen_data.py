@@ -20,7 +20,7 @@ def generate_data(n_clusters=5,clust_std=0.1,n_num=15,n_cat=15,cat_unique=3,n_in
     Returns:
         df (pandas.DataFrame): Generated Dataset
     """
-
+    np.random.seed(1)
     # Generate Gaussian blobs
     mono_blobs = make_blobs(
         n_samples=n_clusters,
@@ -49,7 +49,7 @@ def generate_data(n_clusters=5,clust_std=0.1,n_num=15,n_cat=15,cat_unique=3,n_in
 
     # Discretize categorical variables
     for i in range(n_cat):
-        df.iloc[:,-i-1] = pd.qcut(df.iloc[:,-i-1],cat_unique,labels=False, 
+        df.iloc[:,-i-1] = pd.cut(df.iloc[:,-i-1],cat_unique,labels=False,
         ).astype(str)
 
     return df

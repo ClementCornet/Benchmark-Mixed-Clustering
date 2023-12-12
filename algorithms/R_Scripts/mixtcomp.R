@@ -1,5 +1,6 @@
-library("rjson")
+.libPaths("/home/loup-noe/Projets/DVRC/Benchmark-Mixed-Clustering/R_lib")
 library(RMixtComp)
+library(rjson)
 
 data <- read.csv(file = "temp_data.csv")
 model <- fromJSON(file = "model.json")

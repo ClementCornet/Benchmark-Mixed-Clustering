@@ -1,5 +1,6 @@
+.libPaths("/home/loup-noe/Projets/DVRC/Benchmark-Mixed-Clustering/R_lib")
 library(kamila)
-library("rjson")
+library(rjson)
 
 # Load k from JSON
 k <- fromJSON(file = "k.json")$n_clusters

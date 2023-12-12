@@ -6,6 +6,7 @@ from algorithms.utils.clustering_utils import elbow_method
 import json
 
 
+
 #@profile
 def process(df, **kwargs):
     """Process Modha-Spangler Algorithm
@@ -20,6 +21,7 @@ def process(df, **kwargs):
     df[numerical_columns].to_csv('temp_continue.csv',index=False)
 
     # Pass the desired number of clusters to R through JSON
+    print(f"NUMBER OF CLUSTERS n_clusters : {str(k)}")
     json_data = { "n_clusters" : str(k)}
     with open('k.json', 'w') as f:
         json.dump(json_data, f)
@@ -29,10 +31,12 @@ def process(df, **kwargs):
 
     df_out = pd.read_csv('temp_clustered.csv')
 
-    # Remove temp files created to interact through R
-    os.remove("temp_cat.csv")
-    os.remove("temp_continue.csv")
-    os.remove("temp_clustered.csv")
-    os.remove("k.json")
+    # List of temp files
+    temp_files = ["temp_cat.csv", "temp_continue.csv", "temp_clustered.csv", "k.json"]
+
+    # Remove each temp file if it exists
+    for temp_file in temp_files:
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
 
     return df_out["x"].astype(str)

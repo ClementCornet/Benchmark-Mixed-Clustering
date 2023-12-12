@@ -9,16 +9,12 @@ def process(df, **kwargs):
 
    # Get the number of clusters to process
     k = elbow_method(df)
-
-    g_mat = get_gower_matrix(df)
     
     # Perfom Agglomerative Clustering
-    clusters = AgglomerativeClustering(k,affinity='precomputed',linkage='average').fit_predict(
-        g_mat
-    )
+    clusters = phillip_ottaway(k,df)
     return clusters
 
-#@profile
+##@profile
 def get_gower_matrix(df):
     numerical_columns = df.select_dtypes('number').columns
     categorical_columns = df.select_dtypes('object').columns
@@ -37,3 +33,12 @@ def get_gower_matrix(df):
     g_mat = gower.gower_matrix(df_scale) # Gower's pairwise Distances
 
     return g_mat
+
+#@profile
+def phillip_ottaway(k,df):
+    g_mat = get_gower_matrix(df)
+    # Perfom Agglomerative Clustering
+    clusters = AgglomerativeClustering(k,affinity='precomputed',linkage='average').fit_predict(
+        g_mat
+    )
+    return clusters

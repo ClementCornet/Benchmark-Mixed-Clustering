@@ -52,7 +52,7 @@ class Prenetwork(object):
                  threshold_coeff=THRESHOLD_COEFFICIENT,
                  closest_coeff=CLOSEST_COEFFICIENT,
                  square_length_coeff=SQUARE_LENGTH_COEFFICIENT):
-        """,
+        """
         :param df_data: objects as a data frame with each row giving the values of one element
         :param distance_calculation_method: Method chosen to calculate the "distance" between two objects
         :param area_calculation_method: Method chosen to calculate the equivalent of the "area" occupied by the elements
